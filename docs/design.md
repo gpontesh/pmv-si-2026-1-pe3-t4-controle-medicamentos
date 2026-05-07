@@ -286,7 +286,77 @@ Com base nesses mapas, torna-se possível desenvolver um sistema mais alinhado �
 
 
 ## 4.3 Protótipos das Interfaces
-Apresente nesta seção os protótipos de alta fidelidade do sistema proposto. A fidelidade do protótipo refere-se ao nível de detalhes e funcionalidades incorporadas a ele. Assim, um protótipo de alta fidelidade é uma representação interativa do produto, baseada no computador ou em dispositivos móveis. Esse protótipo já apresenta maior semelhança com o design final em termos de detalhes e funcionalidades. No desenvolvimento dos protótipos, devem ser considerados os princípios gestálticos, as recomendações ergonômicas e as regras de design (como as 8 regras de ouro). É importante descrever no texto do relatório como os princípios gestálticos e as regras de ouro foram seguidas no projeto das interfaces. Nesta etapa deve-se dar uma ênfase na implementação do software de modo que possam ser realizados os testes com usuários na etapa seguinte.
+
+### Identidade visual
+
+A linguagem visual do SCMU adota um “tom clínico”: superfícies claras, bordas suaves e sombras discretas. A paleta usa azul como cor de ação principal e reserva cores como vermelho/âmbar/verde para comunicar criticidade e status (Protocolo de Manchester). Em relação à tipografia, há o uso de fontes sem serifa, com diferenças de peso e tamanho entre títulos, rótulos e valores, a fim de definir uma hierarquia entre os elemtntos.
+
+Objetivo dessas escolhas é criar uma interface de clara comunicação, baixa distração, para que o usuário foque em tarefas sensíveis. 
+
+### Estrutura e navegação
+
+Nas telas internas, a estrutura é estável: uma sidebar fixa com item ativo destacado, um header persistente com busca e notificações, e uma área central com largura e espaçamentos consistentes. Esse “molde” repetido cria um modelo mental forte, porque o usuário não precisa reaprender onde ficam navegação, busca e ações globais.
+
+O objetivo é um maior previsibilidade das interações a redução do tempo de aprendizado de novos usuários
+
+### Fluxos e comportamento 
+Na perspectiva do usuário, há separação clara entre telas públicas (acesso) e telas internas (operações). O sistema fornece **feedback de processamento** em ações como login e **retorna mensagens de erro** quando a operação não pode ser concluída. Para tarefas críticas, como remoção de registros e saídas de estoque, há ação de confirmação e validações são executadas, reduzindo risco operacional. Nos relatórios, a exportação é parte do fluxo, apoiando auditoria e rotinas gerenciais.
+
+### Princípios gestálticos (Gestalt)
+
+#### Proximidade
+
+A fim de reduzir ambiguidades e acelerar a varredura visual,  usa-se da proximidade para formar grupos funcionais sem precisar de explicações adicionais. Campos de formulário aparecem em blocos com espaçamento consistente, ações relacionadas ficam próximas entre si (tanto no topo do card quanto por linha de tabela) e filtros se concentram em uma faixa única antes da lista.
+
+#### Similaridade
+
+Reaproveitamento de padrões: cards de estatísticas repetem estrutura, tabelas preservam o mesmo estilo e comportamento entre telas, e badges mantêm formato e tipografia, variando principalmente cor e rótulo.
+
+####  Região comum 
+
+Para facilitar o processo de localização de controles do sistema, Tabelas são apresentadas dentro de cards que unem cabeçalho, corpo e rodapé, filtros aparecem dentro de contêineres com fundo suave (pílulas) e modais surgem como janela central sobre um overlay. O objetivo é deixar a estrutura mais legível
+
+#### Continuidade 
+
+A continuidade é garantida pela repetição da mesma estrutura entre telas e pelo alinhamento consistente de títulos, conteúdo e áreas de ação. Em tabelas, colunas numéricas à direita e ações em coluna dedicada facilitam leitura comparativa.
+
+### 8 Regras de Ouro de Shneiderman
+
+#### Buscar consistência
+
+A estrutura de navegação lateral, header e conteúdo central é repetida nas telas internas.
+
+A linguagem de componentes (cards, tabelas, badges, modais e botões) se mantém coesa, reduzindo surpresa e aumentando previsibilidade.
+
+#### Permitir atalhos
+
+Há suporte indireto a “atalhos” ao manter busca sempre disponível e oferecer ações rápidas por linha, reduzindo cliques em tarefas recorrentes. A exportação em relatórios também acelera rotinas frequentes.
+
+#### Oferecer feedback informativo
+
+O feedback informativo é oferecido por estados de carregamento no login, mensagens de erro específicas e indicador de notificações não lidas, além da possibilidade de marcar todas como lidas.
+
+#### Projetar diálogos com fechamento
+
+Os diálogos tendem a ter fechamento claro. O fluxo de recuperar senha termina em um estado de sucesso, e modais de cadastro e edição encerram o fluxo ao confirmar. 
+Confirmações comunicam consequências antes de ações destrutivas.
+
+#### Prevenir erros
+
+A prevenção de erros aparece em validações e obrigatoriedade antes de concluir ações, dependências de seleção que evitam estados inválidos e proteção de acesso às telas internas.
+
+#### Permitir reversão
+
+A reversão é atendida de forma parcial por botões de Cancelar e confirmações antes de remoções e reset.
+
+#### Dar controle ao usuário
+
+O controle interno é reforçado quando o usuário decide quando abrir e fechar modais e o painel de notificações, podendo fechar por clique fora e por tecla Esc
+
+#### Reduzir carga de memória de curto prazo
+
+A carga de memória de curto prazo é reduzida ao externalizar informações: estatísticas e badges deixam o estado visível e, em relatórios, dicas textuais reforçam quais filtros estão ativos. 
+
 
 ## 4.4 Testes com Protótipos
 Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
